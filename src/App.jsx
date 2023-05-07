@@ -35,8 +35,8 @@ function App() {
       <Create msg={msg} setMsg={setMsg}/>
       <ul>
         {
-          msg.map(m => {
-            return <li>{m}</li>
+          msg.map((m, i) => {
+            return <li key={i}>{m}</li>
           })
         }
       </ul>
