@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const Create = ({ msg, setMsg }) => {
-  let [input, setInput] = useState("")
+  const [input, setInput] = useState("")
 
   const submitHandler = (e) => {
     e.preventDefault()

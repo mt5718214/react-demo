@@ -5,8 +5,8 @@ import Create from './Create'
 function App() {
   // react component在state或props改變時都會重新渲染
   // state狀態
-  let [number, setNumber] = useState(0)
-  let [msg, setMsg] = useState([])
+  const [number, setNumber] = useState(0)
+  const [msg, setMsg] = useState([])
 
   const users = [
     { name: "小明", age: 16 },
