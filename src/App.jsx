@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import Info from './info'
+import Create from './Create'
 
 function App() {
   // react component在state或props改變時都會重新渲染
   // state狀態
   let [number, setNumber] = useState(0)
+  let [msg, setMsg] = useState([])
+
   const users = [
     { name: "小明", age: 16 },
     { name: "小美", age: 17 },
@@ -20,8 +23,6 @@ function App() {
 
   return (
     <div>
-      <h1>這是App.js的h1標籤</h1>
-
       {users.map(user => {
         return <Info name={user.name} age={user.age}/>
       })}
@@ -30,6 +31,15 @@ function App() {
       <button onClick={buttonHandler}>快按我！</button>
       <button onClick={() => { buttonHandler2(number) }}>加1</button>
       <p>現在數值是{number}</p>
+
+      <Create msg={msg} setMsg={setMsg}/>
+      <ul>
+        {
+          msg.map(m => {
+            return <li>{m}</li>
+          })
+        }
+      </ul>
     </div>
   );
 }
