@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Info from './info'
 import Create from './Create'
 
@@ -8,11 +8,27 @@ function App() {
   const [number, setNumber] = useState(0)
   const [msg, setMsg] = useState([])
 
+  // dummy data
   const users = [
     { name: "小明", age: 16 },
     { name: "小美", age: 17 },
     { name: "小華", age: 15 },
   ]
+
+  /**
+   * 根據DependencyList裡的state變動, 從而觸發effect function的發生,
+   * 此外當頁面第一次render時也會觸發effect function,
+   * 若DependencyList為空, 則只會在頁面第一次render時觸發
+   */
+  useEffect(() => {
+    console.log('我只會出現一次唷~');
+  }, [])
+  useEffect(() => {
+    console.log('number改變了!');
+  }, [number])
+  useEffect(() => {
+    console.log('number或msg改變了!');
+  }, [number, msg])
 
   const buttonHandler = () => {
     alert("你按了button!")
