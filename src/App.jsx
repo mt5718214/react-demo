@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter , Routes, Route } from 'react-router-dom'
+
 import Info from './info'
 import Create from './Create'
+import Layout from './Layout'
+import Home from './Home'
+import About from './About'
+import NotFound from './NotFound'
 
 function App() {
   // react component在state或props改變時都會重新渲染
@@ -56,6 +62,16 @@ function App() {
           })
         }
       </ul>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Home />}></Route>
+            <Route path='pages' element={<About />}></Route>
+            <Route path='*' element={<NotFound />}></Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
